@@ -28,4 +28,4 @@
 - [x] Network Configuration Details
 - [x] Mining Configuration
 - [x] Token Bridge Implementation
-- [ ] Security Considerations
+- [x] Security Considerations
