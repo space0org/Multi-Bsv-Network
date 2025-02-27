@@ -7,7 +7,7 @@
 - [x] Configuration Guide
 
 ## Usage Guide
-- [ ] Usage Guide README
+- [x] Usage Guide README
 - [ ] Starting Networks
 - [ ] Checking Status
 - [ ] Stopping Networks
