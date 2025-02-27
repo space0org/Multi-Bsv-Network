@@ -2,7 +2,7 @@
 
 ## Setup Guide
 - [x] Setup Guide README
-- [ ] Prerequisites
+- [x] Prerequisites
 - [ ] Installation Instructions
 - [ ] Configuration Guide
 
