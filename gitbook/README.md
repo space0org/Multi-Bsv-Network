@@ -1,41 +1,45 @@
-# BSVネットワーク ドキュメント
+# BSVネットワークドキュメント
 
-このドキュメントは、BSVネットワーク（JpyNetworkとLariNetwork）のセットアップ、使用方法、API、トラブルシューティングなどについて説明します。
+## 概要
 
-## 目次
+このドキュメントでは、JpyNetworkとLariNetworkの2つの独立したBitcoin SVネットワークのセットアップ、使用方法、API、トラブルシューティングなどについて説明します。
 
-* [セットアップガイド](guide/setup/README.md)
-  * [前提条件](guide/setup/prerequisites.md)
-  * [インストール手順](guide/setup/installation.md)
-  * [設定ガイド](guide/setup/configuration.md)
-* [使用ガイド](guide/usage/README.md)
-  * [ネットワークの起動](guide/usage/starting-networks.md)
-  * [ステータスの確認](guide/usage/checking-status.md)
-  * [ネットワークの停止](guide/usage/stopping-networks.md)
-  * [デスクトップショートカット](guide/usage/desktop-shortcuts.md)
-* [外部接続ガイド](guide/external-connection/README.md)
-  * [接続の前提条件](guide/external-connection/prerequisites.md)
-  * [ネットワークへの接続](guide/external-connection/connecting-to-network.md)
-  * [ウォレットの設定](guide/external-connection/wallet-setup.md)
-  * [トランザクションの送信](guide/external-connection/sending-transactions.md)
-  * [トークンブリッジの使用](guide/external-connection/using-token-bridge.md)
-* [API ドキュメント](guide/api/README.md)
-  * [APIエンドポイント](guide/api/endpoints.md)
-  * [API使用例](guide/api/examples.md)
-* [トラブルシューティング](guide/troubleshooting/README.md)
-  * [一般的な問題](guide/troubleshooting/common-issues.md)
-  * [ログの確認](guide/troubleshooting/checking-logs.md)
-* [追加セクション](guide/additional/README.md)
-  * [アーキテクチャ概要](guide/additional/architecture.md)
-  * [ネットワーク設定の詳細](guide/additional/network-configuration.md)
-  * [マイニング設定](guide/additional/mining-configuration.md)
-  * [トークンブリッジの実装](guide/additional/token-bridge-implementation.md)
-  * [セキュリティ対策](guide/additional/security-considerations.md)
+## JpyNetworkとLariNetworkの特徴
 
-## はじめに
+### JpyNetwork
+- 独自のブロックチェーンを持つBitcoin SVネットワーク
+- 通貨単位: Jpy（1 Jpy = 1 satoshi）
+- 10秒ごとにブロックを生成
+- 現在のノード: Node4（3.107.165.86）、Node5（3.27.37.63）、Node6（3.26.38.112）
 
-BSVネットワークは、Bitcoin SV（BSV）ブロックチェーンを使用した独立したネットワークです。このドキュメントでは、JpyNetworkとLariNetworkの2つのネットワークのセットアップと使用方法について説明します。また、これらのネットワーク間のトークン交換を可能にするトークンブリッジについても説明します。
+### LariNetwork
+- 独自のブロックチェーンを持つBitcoin SVネットワーク
+- 通貨単位: Lari（1 Lari = 1 satoshi）
+- 10秒ごとにブロックを生成
+- 現在のノード: Node5（3.27.37.63）
 
-## 貢献
+### トークンブリッジ
+- JpyNetworkとLariNetwork間のトークン交換を可能にする
+- 交換レート: 1 Lari = 55 Jpy
+- RESTful APIを通じてアクセス可能
 
-このドキュメントに貢献したい場合は、GitHubリポジトリにプルリクエストを送信してください。
+## ネットワークに参加するメリット
+
+1. **独自のブロックチェーンエコシステム**: 既存のBitcoin SVメインネットとは独立した環境で実験や開発が可能
+2. **高速なブロック生成**: 10秒ごとのブロック生成により、トランザクションの確認が迅速
+3. **クロスネットワークトークン交換**: 2つのネットワーク間でのトークン交換が可能
+4. **低コスト**: トランザクション手数料が非常に低い
+5. **開発者フレンドリー**: APIを通じて簡単に統合可能
+
+## クイックスタート
+
+素早く始めるには、[クイックスタートガイド](guide/quick-start/README.md)を参照してください。
+
+## 詳細情報
+
+- [セットアップガイド](guide/setup/README.md)
+- [使用ガイド](guide/usage/README.md)
+- [外部接続ガイド](guide/external-connection/README.md)
+- [API ドキュメント](guide/api/README.md)
+- [トラブルシューティング](guide/troubleshooting/README.md)
+- [追加セクション](guide/additional/README.md)
