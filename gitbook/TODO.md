@@ -27,5 +27,5 @@
 - [x] Architecture Overview
 - [x] Network Configuration Details
 - [x] Mining Configuration
-- [ ] Token Bridge Implementation
+- [x] Token Bridge Implementation
 - [ ] Security Considerations
