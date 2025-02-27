@@ -82,3 +82,19 @@ curl http://localhost:5001/bridge/info
 - **コンテナ**: token-bridge
 - **ポート**: 5001
 - **交換レート**: 1 Lari (1 satoshi) = 55 Jpy (55 satoshi)
+
+## マイニングのセットアップ
+
+1. JpyNetworkのマイニングスクリプトを実行します。
+```bash
+cd ~/Multi-Bsv-Network/jpynetwork
+./start_mining.sh
+```
+
+2. LariNetworkのマイニングスクリプトを実行します。
+```bash
+cd ~/Multi-Bsv-Network/larinetwork
+./start_mining.sh
+```
+
+3. 詳細なマイニング手順については、マイニングガイド（docs/mining.md）を参照してください。
