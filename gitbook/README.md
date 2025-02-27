@@ -1,21 +1,41 @@
-# BSVネットワークガイド
+# BSVネットワーク ドキュメント
 
-## 概要
+このドキュメントは、BSVネットワーク（JpyNetworkとLariNetwork）のセットアップ、使用方法、API、トラブルシューティングなどについて説明します。
 
-このガイドでは、JpyNetworkとLariNetworkの2つの独立したBitcoin SVネットワークのセットアップと使用方法について説明します。また、これらのネットワーク間でトークンを交換するためのトークンブリッジAPIの使用方法についても説明します。
+## 目次
 
-## 主な機能
+* [セットアップガイド](guide/setup/README.md)
+  * [前提条件](guide/setup/prerequisites.md)
+  * [インストール手順](guide/setup/installation.md)
+  * [設定ガイド](guide/setup/configuration.md)
+* [使用ガイド](guide/usage/README.md)
+  * [ネットワークの起動](guide/usage/starting-networks.md)
+  * [ステータスの確認](guide/usage/checking-status.md)
+  * [ネットワークの停止](guide/usage/stopping-networks.md)
+  * [デスクトップショートカット](guide/usage/desktop-shortcuts.md)
+* [外部接続ガイド](guide/external-connection/README.md)
+  * [接続の前提条件](guide/external-connection/prerequisites.md)
+  * [ネットワークへの接続](guide/external-connection/connecting-to-network.md)
+  * [ウォレットの設定](guide/external-connection/wallet-setup.md)
+  * [トランザクションの送信](guide/external-connection/sending-transactions.md)
+  * [トークンブリッジの使用](guide/external-connection/using-token-bridge.md)
+* [API ドキュメント](guide/api/README.md)
+  * [APIエンドポイント](guide/api/endpoints.md)
+  * [API使用例](guide/api/examples.md)
+* [トラブルシューティング](guide/troubleshooting/README.md)
+  * [一般的な問題](guide/troubleshooting/common-issues.md)
+  * [ログの確認](guide/troubleshooting/checking-logs.md)
+* [追加セクション](guide/additional/README.md)
+  * [アーキテクチャ概要](guide/additional/architecture.md)
+  * [ネットワーク設定の詳細](guide/additional/network-configuration.md)
+  * [マイニング設定](guide/additional/mining-configuration.md)
+  * [トークンブリッジの実装](guide/additional/token-bridge-implementation.md)
+  * [セキュリティ対策](guide/additional/security-considerations.md)
 
-- ワンクリックでの両ネットワークの起動
-- ブロック0から始まる独立したネットワーク
-- 自動的なP2P接続の確立
-- 自動的なマイニングの開始
-- 1 Lari = 55 Jpyの交換レートでのトークンブリッジ
+## はじめに
 
-## 対象読者
+BSVネットワークは、Bitcoin SV（BSV）ブロックチェーンを使用した独立したネットワークです。このドキュメントでは、JpyNetworkとLariNetworkの2つのネットワークのセットアップと使用方法について説明します。また、これらのネットワーク間のトークン交換を可能にするトークンブリッジについても説明します。
 
-このガイドは、Bitcoin SVネットワークを構築・運用したいと考えている開発者やシステム管理者を対象としています。基本的なLinuxコマンドとDockerの知識があることを前提としています。
+## 貢献
 
-## ガイドの使い方
-
-左側のナビゲーションメニューから、必要なセクションを選択してください。初めて使用する場合は、[セットアップガイド](guide/setup/README.md)から始めることをお勧めします。
+このドキュメントに貢献したい場合は、GitHubリポジトリにプルリクエストを送信してください。
