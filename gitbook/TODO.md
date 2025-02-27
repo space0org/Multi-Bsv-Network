@@ -19,7 +19,7 @@
 - [x] API Usage Examples
 
 ## Troubleshooting
-- [ ] Troubleshooting README
+- [x] Troubleshooting README
 - [ ] Common Issues
 - [ ] Checking Logs
 
