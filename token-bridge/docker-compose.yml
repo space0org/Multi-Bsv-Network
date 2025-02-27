@@ -1,0 +1,14 @@
+version: '3'
+services:
+  token-bridge:
+    build: .
+    container_name: token-bridge
+    ports:
+      - "5001:5001"
+    restart: always
+    networks:
+      - bridge-network
+
+networks:
+  bridge-network:
+    driver: bridge
