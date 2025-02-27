@@ -11,7 +11,7 @@
 - [x] Starting Networks
 - [x] Checking Status
 - [x] Stopping Networks
-- [ ] Desktop Shortcuts
+- [x] Desktop Shortcuts
 
 ## API Documentation
 - [ ] API Documentation README
