@@ -1,68 +1,79 @@
-# ワンクリックBSVネットワークセットアップ
+# BSV Network One-Click Setup
 
-このツールは、JpyNetworkとLariNetworkの両方のBitcoin SVネットワークを自動的に起動し、トークンブリッジを設定し、マイニングを開始するためのワンクリックソリューションです。
+This directory contains scripts for setting up and managing two independent Bitcoin SV networks (JpyNetwork and LariNetwork) with a token bridge between them.
 
-## 必要条件
+## Requirements
 
 - Docker
-- Docker Compose
+- Bash
 
-## 使用方法
+## Usage
 
-### 初回セットアップと起動
+### Setup
+
+Run the setup script to prepare the environment:
+
+```bash
+./setup.sh
+```
+
+### Start Networks
+
+Start both networks and the token bridge with:
 
 ```bash
 ./start.sh
 ```
 
-このコマンドは以下を実行します：
-1. 必要なディレクトリとファイルを作成
-2. Docker Composeを使用してコンテナを起動
-3. 両方のネットワークで初期ブロックを生成
-4. バックグラウンドでマイニングプロセスを開始
+This will:
+1. Start JpyNetwork node
+2. Start LariNetwork node
+3. Start the token bridge
+4. Establish P2P connections between networks
+5. Generate initial blocks
+6. Start mining on both networks
 
-### ネットワークの停止
+### Check Status
 
-```bash
-./stop.sh
-```
-
-このコマンドは、マイニングプロセスを停止し、すべてのDockerコンテナを停止します。
-
-### ステータスの確認
+Check the status of the networks and token bridge:
 
 ```bash
 ./status.sh
 ```
 
-このコマンドは、ネットワークのステータス、ブロック高、トークンブリッジの状態を表示します。
+### Stop Networks
 
-## ネットワーク情報
+Stop all services:
 
-### JpyNetwork
-- コンテナ名: jpynetwork-node
-- RPC ポート: 18332
-- ネットワークポート: 18333
-- ブロック同期ポート: 18444
-- RPC認証情報: jpyuser / jpypassword
+```bash
+./stop.sh
+```
 
-### LariNetwork
-- コンテナ名: larinetwork-node
-- RPC ポート: 19332
-- ネットワークポート: 19333
-- ブロック同期ポート: 19444
-- RPC認証情報: lariuser / laripassword
+## Token Bridge API
 
-### トークンブリッジ
-- コンテナ名: token-bridge
-- APIポート: 5001
-- 交換レート: 1 Lari = 55 Jpy
-- エンドポイント:
-  - GET /bridge/info - ブリッジ情報の取得
-  - POST /bridge/swap/jpy-to-lari - JPYからLariへの交換
-  - POST /bridge/swap/lari-to-jpy - LariからJPYへの交換
-  - GET /bridge/transactions - 全トランザクション履歴の取得
+The token bridge provides the following endpoints:
 
-## 注意事項
-- 両ネットワークは独立しており、互いに同期していません
-- マイニングは30秒ごとに新しいブロックを生成します
+- `GET /bridge/info`: Get information about the bridge
+- `POST /bridge/swap/jpy-to-lari`: Swap JPY to Lari
+- `POST /bridge/swap/lari-to-jpy`: Swap Lari to JPY
+- `GET /bridge/transactions`: Get transaction history
+
+### Exchange Rate
+
+1 Lari = 55 Jpy
+
+### Example API Calls
+
+```bash
+# Get bridge info
+curl http://localhost:5001/bridge/info
+
+# Swap JPY to Lari
+curl -X POST -H "Content-Type: application/json" -d '{"amount": 550, "destination_address": "example_address"}' http://localhost:5001/bridge/swap/jpy-to-lari
+
+# Swap Lari to JPY
+curl -X POST -H "Content-Type: application/json" -d '{"amount": 10, "destination_address": "example_address"}' http://localhost:5001/bridge/swap/lari-to-jpy
+
+# Get transaction history
+curl http://localhost:5001/bridge/transactions
+```

@@ -1,35 +1,34 @@
 version: '3'
 
 services:
-  # JpyNetwork Node
   jpynetwork-node:
     image: bitcoinsv/bitcoin-sv:1.0.8.beta
     container_name: jpynetwork-node
     volumes:
-      - ./jpynetwork/data:/home/bitcoin/.bitcoin
       - ./jpynetwork/bitcoin.conf:/home/bitcoin/.bitcoin/bitcoin.conf
+      - ./jpynetwork/data:/home/bitcoin/.bitcoin/data
     ports:
       - "18332:18332"
       - "18333:18333"
       - "18444:18444"
+    command: bitcoind -excessiveblocksize=0 -maxstackmemoryusageconsensus=0
     networks:
       - bsv-network
 
-  # LariNetwork Node
   larinetwork-node:
     image: bitcoinsv/bitcoin-sv:1.0.8.beta
     container_name: larinetwork-node
     volumes:
-      - ./larinetwork/data:/home/bitcoin/.bitcoin
       - ./larinetwork/bitcoin.conf:/home/bitcoin/.bitcoin/bitcoin.conf
+      - ./larinetwork/data:/home/bitcoin/.bitcoin/data
     ports:
       - "19332:18332"
       - "19333:18333"
       - "19444:18444"
+    command: bitcoind -excessiveblocksize=0 -maxstackmemoryusageconsensus=0
     networks:
       - bsv-network
 
-  # Token Bridge
   token-bridge:
     build: ./token-bridge
     container_name: token-bridge

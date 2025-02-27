@@ -1,10 +1,7 @@
 from flask import Flask, jsonify, request
 import time
-import uuid
-import logging
 
 app = Flask(__name__)
-logging.basicConfig(level=logging.INFO)
 
 # Network configurations
 networks = {

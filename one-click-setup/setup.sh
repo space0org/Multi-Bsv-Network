@@ -5,15 +5,14 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
 echo "===== BSV Network Setup ====="
-echo "Setting up JpyNetwork and LariNetwork..."
 
-# Create directories
+# Create necessary directories
 mkdir -p jpynetwork/data
 mkdir -p larinetwork/data
 mkdir -p token-bridge
 
-# Create JpyNetwork bitcoin.conf
-cat > jpynetwork/bitcoin.conf << 'CONF'
+# Create bitcoin.conf for JpyNetwork
+cat > jpynetwork/bitcoin.conf << 'EOC'
 # JpyNetwork Configuration
 regtest=1
 server=1
@@ -33,11 +32,10 @@ rest=1
 # P2P Configuration
 listen=1
 bind=0.0.0.0:18444
-# Will be connected to LariNetwork automatically by start.sh
-CONF
+EOC
 
-# Create LariNetwork bitcoin.conf
-cat > larinetwork/bitcoin.conf << 'CONF'
+# Create bitcoin.conf for LariNetwork
+cat > larinetwork/bitcoin.conf << 'EOC'
 # LariNetwork Configuration
 regtest=1
 server=1
@@ -57,18 +55,14 @@ rest=1
 # P2P Configuration
 listen=1
 bind=0.0.0.0:19444
-# Will be connected to JpyNetwork automatically by start.sh
-CONF
+EOC
 
-# Create token bridge app.py
-cat > token-bridge/app.py << 'PYTHON'
+# Create token bridge files
+cat > token-bridge/app.py << 'EOC'
 from flask import Flask, jsonify, request
 import time
-import uuid
-import logging
 
 app = Flask(__name__)
-logging.basicConfig(level=logging.INFO)
 
 # Network configurations
 networks = {
@@ -168,10 +162,9 @@ def get_transactions():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
-PYTHON
+EOC
 
-# Create token bridge Dockerfile
-cat > token-bridge/Dockerfile << 'DOCKERFILE'
+cat > token-bridge/Dockerfile << 'EOC'
 FROM python:3.9-slim
 
 WORKDIR /app
@@ -184,12 +177,12 @@ COPY . .
 EXPOSE 5001
 
 CMD ["python", "app.py"]
-DOCKERFILE
+EOC
 
-# Create token bridge requirements.txt
-cat > token-bridge/requirements.txt << 'REQUIREMENTS'
+cat > token-bridge/requirements.txt << 'EOC'
 flask==2.0.1
-requests==2.26.0
-REQUIREMENTS
+werkzeug==2.0.1
+EOC
 
+echo "Setting up JpyNetwork and LariNetwork..."
 echo "Setup completed successfully!"

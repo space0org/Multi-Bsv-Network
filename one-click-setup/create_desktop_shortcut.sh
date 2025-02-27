@@ -2,42 +2,50 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DESKTOP_DIR="$HOME/Desktop"
 
-# Create desktop shortcut for Linux
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    cat > ~/Desktop/BSV-Networks.desktop << EOF2
+# Create desktop directory if it doesn't exist
+mkdir -p "$DESKTOP_DIR"
+
+# Create desktop shortcut for start.sh
+cat > "$DESKTOP_DIR/Start_BSV_Networks.desktop" << EOL
 [Desktop Entry]
 Type=Application
-Name=BSV Networks
-Comment=Start Bitcoin SV Networks
-Exec=bash -c "cd ${SCRIPT_DIR} && ./start.sh; bash"
-Icon=terminal
+Name=Start BSV Networks
+Comment=Start JpyNetwork and LariNetwork
+Exec=bash -c "cd $SCRIPT_DIR && ./start.sh; read -p 'Press Enter to close...'"
+Icon=utilities-terminal
 Terminal=true
 Categories=Development;
-EOF2
-    chmod +x ~/Desktop/BSV-Networks.desktop
-    echo "Desktop shortcut created at ~/Desktop/BSV-Networks.desktop"
+EOL
 
-# Create desktop shortcut for macOS
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    cat > ~/Desktop/BSV-Networks.command << EOF2
-#!/bin/bash
-cd "${SCRIPT_DIR}"
-./start.sh
-EOF2
-    chmod +x ~/Desktop/BSV-Networks.command
-    echo "Desktop shortcut created at ~/Desktop/BSV-Networks.command"
+# Create desktop shortcut for status.sh
+cat > "$DESKTOP_DIR/BSV_Networks_Status.desktop" << EOL
+[Desktop Entry]
+Type=Application
+Name=BSV Networks Status
+Comment=Check status of JpyNetwork and LariNetwork
+Exec=bash -c "cd $SCRIPT_DIR && ./status.sh; read -p 'Press Enter to close...'"
+Icon=utilities-terminal
+Terminal=true
+Categories=Development;
+EOL
 
-# Create desktop shortcut for Windows (if running in WSL)
-elif [[ -n "$WSL_DISTRO_NAME" ]]; then
-    cat > /mnt/c/Users/Public/Desktop/BSV-Networks.bat << EOF2
-@echo off
-wsl -d ${WSL_DISTRO_NAME} -e bash -c "cd ${SCRIPT_DIR} && ./start.sh && bash"
-EOF2
-    echo "Desktop shortcut created at C:\\Users\\Public\\Desktop\\BSV-Networks.bat"
+# Create desktop shortcut for stop.sh
+cat > "$DESKTOP_DIR/Stop_BSV_Networks.desktop" << EOL
+[Desktop Entry]
+Type=Application
+Name=Stop BSV Networks
+Comment=Stop JpyNetwork and LariNetwork
+Exec=bash -c "cd $SCRIPT_DIR && ./stop.sh; read -p 'Press Enter to close...'"
+Icon=utilities-terminal
+Terminal=true
+Categories=Development;
+EOL
 
-# Unknown OS
-else
-    echo "Unsupported operating system: $OSTYPE"
-    echo "Please create a desktop shortcut manually to run the start.sh script."
-fi
+# Make shortcuts executable
+chmod +x "$DESKTOP_DIR/Start_BSV_Networks.desktop"
+chmod +x "$DESKTOP_DIR/BSV_Networks_Status.desktop"
+chmod +x "$DESKTOP_DIR/Stop_BSV_Networks.desktop"
+
+echo "Desktop shortcuts created successfully!"

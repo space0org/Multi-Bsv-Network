@@ -13,6 +13,7 @@ pkill -f "docker exec larinetwork-node bitcoin-cli" || true
 
 # Stop Docker containers
 echo "Stopping Docker containers..."
-docker-compose down
+docker stop jpynetwork-node larinetwork-node token-bridge 2>/dev/null || true
+docker rm jpynetwork-node larinetwork-node token-bridge 2>/dev/null || true
 
 echo "All services stopped successfully!"
