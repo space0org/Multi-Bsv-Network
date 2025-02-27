@@ -14,7 +14,7 @@
 - [x] Desktop Shortcuts
 
 ## API Documentation
-- [ ] API Documentation README
+- [x] API Documentation README
 - [ ] API Endpoints
 - [ ] API Usage Examples
 
