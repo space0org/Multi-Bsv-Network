@@ -20,7 +20,7 @@
 
 ## Troubleshooting
 - [x] Troubleshooting README
-- [ ] Common Issues
+- [x] Common Issues
 - [ ] Checking Logs
 
 ## Additional Sections
