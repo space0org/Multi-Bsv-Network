@@ -1,18 +1,41 @@
-# Multi-BSV-Network
+# BSVネットワーク ドキュメント
 
-このリポジトリは、複数のBitcoin SVネットワーク（JpyNetworkとLariNetwork）とそれらの間のトークンブリッジのバックアップです。
+このドキュメントは、BSVネットワーク（JpyNetworkとLariNetwork）のセットアップ、使用方法、API、トラブルシューティングなどについて説明します。
 
-## 構成
+## 目次
 
-- **JpyNetwork**: メインのBSVネットワーク
-- **LariNetwork**: セカンダリBSVネットワーク
-- **Token Bridge**: 両ネットワーク間のトークン交換ブリッジ（交換レート: 1 Lari = 55 Jpy）
+* [セットアップガイド](guide/setup/README.md)
+  * [前提条件](guide/setup/prerequisites.md)
+  * [インストール手順](guide/setup/installation.md)
+  * [設定ガイド](guide/setup/configuration.md)
+* [使用ガイド](guide/usage/README.md)
+  * [ネットワークの起動](guide/usage/starting-networks.md)
+  * [ステータスの確認](guide/usage/checking-status.md)
+  * [ネットワークの停止](guide/usage/stopping-networks.md)
+  * [デスクトップショートカット](guide/usage/desktop-shortcuts.md)
+* [外部接続ガイド](guide/external-connection/README.md)
+  * [接続の前提条件](guide/external-connection/prerequisites.md)
+  * [ネットワークへの接続](guide/external-connection/connecting-to-network.md)
+  * [ウォレットの設定](guide/external-connection/wallet-setup.md)
+  * [トランザクションの送信](guide/external-connection/sending-transactions.md)
+  * [トークンブリッジの使用](guide/external-connection/using-token-bridge.md)
+* [API ドキュメント](guide/api/README.md)
+  * [APIエンドポイント](guide/api/endpoints.md)
+  * [API使用例](guide/api/examples.md)
+* [トラブルシューティング](guide/troubleshooting/README.md)
+  * [一般的な問題](guide/troubleshooting/common-issues.md)
+  * [ログの確認](guide/troubleshooting/checking-logs.md)
+* [追加セクション](guide/additional/README.md)
+  * [アーキテクチャ概要](guide/additional/architecture.md)
+  * [ネットワーク設定の詳細](guide/additional/network-configuration.md)
+  * [マイニング設定](guide/additional/mining-configuration.md)
+  * [トークンブリッジの実装](guide/additional/token-bridge-implementation.md)
+  * [セキュリティ対策](guide/additional/security-considerations.md)
 
-## ディレクトリ構造
+## はじめに
 
-- `jpynetwork/`: JpyNetworkの設定ファイル
-- `larinetwork/`: LariNetworkの設定ファイル
-- `token-bridge/`: トークンブリッジの実装
-- `docs/`: ドキュメント
+BSVネットワークは、Bitcoin SV（BSV）ブロックチェーンを使用した独立したネットワークです。このドキュメントでは、JpyNetworkとLariNetworkの2つのネットワークのセットアップと使用方法について説明します。また、これらのネットワーク間のトークン交換を可能にするトークンブリッジについても説明します。
 
-詳細な情報は各ディレクトリ内のREADMEファイルを参照してください。
+## 貢献
+
+このドキュメントに貢献したい場合は、GitHubリポジトリにプルリクエストを送信してください。
