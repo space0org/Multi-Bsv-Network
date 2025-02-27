@@ -10,25 +10,35 @@ echo "===== BSV Networks Status ====="
 echo "Docker containers status:"
 docker ps | grep -E 'jpynetwork-node|larinetwork-node|token-bridge' || echo "No BSV network containers running"
 
-# If containers are running, get block heights
+# If containers are running, get detailed status
 if docker ps | grep -q jpynetwork-node; then
-    echo "JpyNetwork block height:"
+    echo -e "\nJpyNetwork Status:"
+    echo "Block height:"
     docker exec jpynetwork-node bitcoin-cli -conf=/home/bitcoin/.bitcoin/bitcoin.conf getblockcount
+    echo "P2P connections:"
+    docker exec jpynetwork-node bitcoin-cli -conf=/home/bitcoin/.bitcoin/bitcoin.conf getpeerinfo | grep addr
+    echo "Network info:"
+    docker exec jpynetwork-node bitcoin-cli -conf=/home/bitcoin/.bitcoin/bitcoin.conf getnetworkinfo | grep connections
 fi
 
 if docker ps | grep -q larinetwork-node; then
-    echo "LariNetwork block height:"
+    echo -e "\nLariNetwork Status:"
+    echo "Block height:"
     docker exec larinetwork-node bitcoin-cli -conf=/home/bitcoin/.bitcoin/bitcoin.conf getblockcount
+    echo "P2P connections:"
+    docker exec larinetwork-node bitcoin-cli -conf=/home/bitcoin/.bitcoin/bitcoin.conf getpeerinfo | grep addr
+    echo "Network info:"
+    docker exec larinetwork-node bitcoin-cli -conf=/home/bitcoin/.bitcoin/bitcoin.conf getnetworkinfo | grep connections
 fi
 
 # Check token bridge status
 if docker ps | grep -q token-bridge; then
-    echo "Token Bridge status:"
+    echo -e "\nToken Bridge Status:"
     curl -s http://localhost:5001/bridge/info
 fi
 
 # Check mining processes
-echo "Mining processes:"
-ps aux | grep -E "docker exec (jpynetwork|larinetwork)-node bitcoin-cli" | grep -v grep || echo "No mining processes running"
+echo -e "\nMining Processes:"
+ps aux | grep -E "docker exec (jpynetwork|larinetwork)-node bitcoin-cli.*generate" | grep -v grep || echo "No mining processes running"
 
-echo "===== Status Check Complete ====="
+echo -e "\n===== Status Check Complete ====="

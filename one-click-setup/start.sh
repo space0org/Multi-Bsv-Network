@@ -20,6 +20,21 @@ docker-compose up -d
 echo "Waiting for nodes to start..."
 sleep 10
 
+# Establish P2P connections between networks
+echo "Establishing P2P connections..."
+
+# Get container IPs
+JPY_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' jpynetwork-node)
+LARI_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' larinetwork-node)
+
+# Connect JpyNetwork to LariNetwork
+docker exec jpynetwork-node bitcoin-cli -conf=/home/bitcoin/.bitcoin/bitcoin.conf addnode "${LARI_IP}:19444" add
+
+# Connect LariNetwork to JpyNetwork
+docker exec larinetwork-node bitcoin-cli -conf=/home/bitcoin/.bitcoin/bitcoin.conf addnode "${JPY_IP}:18444" add
+
+echo "P2P connections established."
+
 # Generate initial blocks for both networks
 echo "Generating initial blocks for JpyNetwork..."
 docker exec jpynetwork-node bitcoin-cli -conf=/home/bitcoin/.bitcoin/bitcoin.conf generate 101
@@ -40,6 +55,12 @@ echo "JpyNetwork block height:"
 docker exec jpynetwork-node bitcoin-cli -conf=/home/bitcoin/.bitcoin/bitcoin.conf getblockcount
 echo "LariNetwork block height:"
 docker exec larinetwork-node bitcoin-cli -conf=/home/bitcoin/.bitcoin/bitcoin.conf getblockcount
+
+# Check P2P connections
+echo "JpyNetwork connections:"
+docker exec jpynetwork-node bitcoin-cli -conf=/home/bitcoin/.bitcoin/bitcoin.conf getpeerinfo | grep addr
+echo "LariNetwork connections:"
+docker exec larinetwork-node bitcoin-cli -conf=/home/bitcoin/.bitcoin/bitcoin.conf getpeerinfo | grep addr
 
 echo "Token Bridge API is available at: http://localhost:5001"
 echo "===== Setup Complete ====="
