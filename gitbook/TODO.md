@@ -21,7 +21,7 @@
 ## Troubleshooting
 - [x] Troubleshooting README
 - [x] Common Issues
-- [ ] Checking Logs
+- [x] Checking Logs
 
 ## Additional Sections
 - [ ] Architecture Overview
