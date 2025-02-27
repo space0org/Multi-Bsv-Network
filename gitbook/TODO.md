@@ -10,7 +10,7 @@
 - [x] Usage Guide README
 - [x] Starting Networks
 - [x] Checking Status
-- [ ] Stopping Networks
+- [x] Stopping Networks
 - [ ] Desktop Shortcuts
 
 ## API Documentation
