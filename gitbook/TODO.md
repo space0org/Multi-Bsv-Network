@@ -24,7 +24,7 @@
 - [x] Checking Logs
 
 ## Additional Sections
-- [ ] Architecture Overview
+- [x] Architecture Overview
 - [ ] Network Configuration Details
 - [ ] Mining Configuration
 - [ ] Token Bridge Implementation
