@@ -8,7 +8,7 @@
 
 ## Usage Guide
 - [x] Usage Guide README
-- [ ] Starting Networks
+- [x] Starting Networks
 - [ ] Checking Status
 - [ ] Stopping Networks
 - [ ] Desktop Shortcuts
