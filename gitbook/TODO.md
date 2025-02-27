@@ -9,7 +9,7 @@
 ## Usage Guide
 - [x] Usage Guide README
 - [x] Starting Networks
-- [ ] Checking Status
+- [x] Checking Status
 - [ ] Stopping Networks
 - [ ] Desktop Shortcuts
 
