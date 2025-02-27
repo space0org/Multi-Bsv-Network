@@ -15,7 +15,7 @@
 
 ## API Documentation
 - [x] API Documentation README
-- [ ] API Endpoints
+- [x] API Endpoints
 - [ ] API Usage Examples
 
 ## Troubleshooting
