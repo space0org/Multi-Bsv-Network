@@ -4,7 +4,7 @@
 - [x] Setup Guide README
 - [x] Prerequisites
 - [x] Installation Instructions
-- [ ] Configuration Guide
+- [x] Configuration Guide
 
 ## Usage Guide
 - [ ] Usage Guide README
