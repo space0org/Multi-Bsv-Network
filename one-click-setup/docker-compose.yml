@@ -11,7 +11,7 @@ services:
       - "18332:18332"
       - "18333:18333"
       - "18444:18444"
-    command: bitcoind -excessiveblocksize=0 -maxstackmemoryusageconsensus=0
+    command: bitcoind -excessiveblocksize=2000000000 -maxstackmemoryusageconsensus=100000000
     networks:
       - bsv-network
 
@@ -25,7 +25,7 @@ services:
       - "19332:18332"
       - "19333:18333"
       - "19444:18444"
-    command: bitcoind -excessiveblocksize=0 -maxstackmemoryusageconsensus=0
+    command: bitcoind -excessiveblocksize=2000000000 -maxstackmemoryusageconsensus=100000000
     networks:
       - bsv-network
 
